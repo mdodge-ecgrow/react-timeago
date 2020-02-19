@@ -168,19 +168,21 @@ export default class TimeAgo extends Component<Props> {
     const suffix = then < timeNow ? 'ago' : 'from now'
 
     const [value, unit] =
-      seconds < MINUTE
-        ? [Math.round(seconds), 'second']
-        : seconds < HOUR
-          ? [Math.round(seconds / MINUTE), 'minute']
-          : seconds < DAY
-            ? [Math.round(seconds / HOUR), 'hour']
-            : seconds < WEEK
-              ? [Math.round(seconds / DAY), 'day']
-              : seconds < MONTH
-                ? [Math.round(seconds / WEEK), 'week']
-                : seconds < YEAR
-                  ? [Math.round(seconds / MONTH), 'month']
-                  : [Math.round(seconds / YEAR), 'year']
+      seconds === 0
+        ? 'Just now...'
+        : seconds < MINUTE
+          ? [Math.round(seconds), 'second']
+          : seconds < HOUR
+            ? [Math.round(seconds / MINUTE), 'minute']
+            : seconds < DAY
+              ? [Math.round(seconds / HOUR), 'hour']
+              : seconds < WEEK
+                ? [Math.round(seconds / DAY), 'day']
+                : seconds < MONTH
+                  ? [Math.round(seconds / WEEK), 'week']
+                  : seconds < YEAR
+                    ? [Math.round(seconds / MONTH), 'month']
+                    : [Math.round(seconds / YEAR), 'year']
 
     const passDownTitle =
       typeof title === 'undefined'
